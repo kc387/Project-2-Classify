@@ -20,7 +20,7 @@
 dot:
 
     # Prologue
-	addi sp, sp, -36
+	addi sp, sp, -40
     sw ra, 0(sp)
     sw s0, 4(sp)
     sw s1, 8(sp)
@@ -77,7 +77,7 @@ loop_end:
     lw s6, 28(sp)
     lw s7, 32(sp)
     lw s8, 36(sp)
-    addi sp, sp, 36
+    addi sp, sp, 40
 
     jr ra
 
@@ -94,7 +94,7 @@ error5:
     lw s6, 28(sp)
     lw s7, 32(sp)
     lw s8, 36(sp)
-    addi sp, sp, 36
+    addi sp, sp, 40
     jal exit2
     
 error6:
@@ -109,7 +109,7 @@ error6:
     lw s6, 28(sp)
     lw s7, 32(sp)
     lw s8, 36(sp)
-    addi sp, sp, 36
+    addi sp, sp, 40
     jal exit2
 
     # Epilogue
