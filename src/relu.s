@@ -21,8 +21,8 @@ relu:
     sw s2, 12(sp)
     sw s3, 16(sp)
 
-    add s0, s0, x0 # s0 -> pointer to array
-    add s1, s1, x0 # s1 -> number of elements in array
+    add s0, a0, x0 # s0 -> pointer to array
+    add s1, a1, x0 # s1 -> number of elements in array
 
 loop_start:
     li s2 0 
