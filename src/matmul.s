@@ -74,13 +74,11 @@ inner_loop_start:
     mv a2 s2
     li a3 1
     mv a4 s5
-    ebreak
     jal ra dot
 	sw a0 0(s6) # store dot in d[0]
     addi s6, s6, 4 # shift over one
     addi s3, s3, 4
     addi s8, s8, 1
-    ebreak
     j inner_loop_start
     
 outer_loop_end:
