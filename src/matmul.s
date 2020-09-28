@@ -25,7 +25,7 @@
 matmul:
 
     # Prologue
-	addi sp, sp, -48
+	addi sp, sp, -44
     sw ra, 0(sp)
     sw s0, 4(sp)
     sw s1, 8(sp)
@@ -37,7 +37,6 @@ matmul:
     sw s7, 32(sp)
     sw s8, 36(sp)
     sw s9, 40(sp)
-    sw s10, 44(sp)
     
     add s0, a0, x0 # s0 -> pointer to start of m0 (left matrix)
     add s1, a1, x0 # s1 -> # rows of m0
@@ -102,8 +101,7 @@ end:
     lw s7, 32(sp)
     lw s8, 36(sp)
     lw s9, 40(sp)
-    lw s10, 44(sp)
-    addi sp, sp, 48
+    addi sp, sp, 44
     
 
 	ret
@@ -122,8 +120,7 @@ error2:
     lw s7, 32(sp)
     lw s8, 36(sp)
     lw s9, 40(sp)
-    lw s10, 44(sp)
-    addi sp, sp, 48
+    addi sp, sp, 44
     jal exit2
     
 error3:
@@ -139,8 +136,7 @@ error3:
     lw s7, 32(sp)
     lw s8, 36(sp)
     lw s9, 40(sp)
-    lw s10, 44(sp)
-    addi sp, sp, 48
+    addi sp, sp, 44
     jal exit2
     
 error4:
@@ -156,8 +152,7 @@ error4:
     lw s7, 32(sp)
     lw s8, 36(sp)
     lw s9, 40(sp)
-    lw s10, 44(sp)
-    addi sp, sp, 48
+    addi sp, sp, 44
     jal exit2
 
     # Epilogue
