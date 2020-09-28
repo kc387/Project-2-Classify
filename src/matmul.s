@@ -25,7 +25,7 @@
 matmul:
 
     # Prologue
-	addi sp, sp, -44
+	addi sp, sp, -48
     sw ra, 0(sp)
     sw s0, 4(sp)
     sw s1, 8(sp)
@@ -46,6 +46,7 @@ matmul:
     add s4, a4, x0 # s4 -> # rows of m1
     add s5, a5, x0 # s5 -> # cols of m1
     add s6, a6, x0 # s6 -> pointer to start of d (return matrix)
+    add s9, a3, x0
     
     # Error checks
     li t0 1
@@ -63,34 +64,32 @@ loop_start:
     add t2, t2, s5 # stride of m1
     
 outer_loop_start:
-	lw s9 0(s0) # get value at m0[0] and stick it in s9 YAY
     bge s7 s1 end
 
 inner_loop_start:
-	lw s10 0(s3) # get value at m1[0] and stick it in s10 YAY
     bge s8 s5 outer_loop_end
     # dot
-    mv a0 s9
-    mv a1 s10
+    mv a0 s0
+    mv a1 s3
     mv a2 s2
-    mv a3 t1
-    mv a4 t2
+    li a3 1
+    mv a4 s5
+    ebreak
     jal ra dot
-	sw s6 0(a0) # store dot in d[0]
+	sw a0 0(s6) # store dot in d[0]
     addi s6, s6, 4 # shift over one
-    sw s10 0(s3)
-    
-    addi s10, s10, 4 # move over
+    addi s3, s3, 4
     addi s8, s8, 1
+    ebreak
     j inner_loop_start
     
 outer_loop_end:
-	sw s9 0(s0)
+	mv s3 s9
     li t4 4
-    mul t5, s2, t4
-    add s9, s9, t5
+    mul t3, t4, s2
+    add s0, s0, t3
     addi s7, s7, 1
-    lw s10 0(s3)
+    li s8, 0
     j outer_loop_start
     
 end:
@@ -106,9 +105,10 @@ end:
     lw s8, 36(sp)
     lw s9, 40(sp)
     lw s10, 44(sp)
-    addi sp, sp, 44
+    addi sp, sp, 48
+    
 
-	jr ra
+	ret
 
 	# error
 error2:
@@ -125,7 +125,7 @@ error2:
     lw s8, 36(sp)
     lw s9, 40(sp)
     lw s10, 44(sp)
-    addi sp, sp, 44
+    addi sp, sp, 48
     jal exit2
     
 error3:
@@ -142,7 +142,7 @@ error3:
     lw s8, 36(sp)
     lw s9, 40(sp)
     lw s10, 44(sp)
-    addi sp, sp, 44
+    addi sp, sp, 48
     jal exit2
     
 error4:
@@ -159,7 +159,7 @@ error4:
     lw s8, 36(sp)
     lw s9, 40(sp)
     lw s10, 44(sp)
-    addi sp, sp, 44
+    addi sp, sp, 48
     jal exit2
 
     # Epilogue
