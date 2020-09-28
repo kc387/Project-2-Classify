@@ -29,7 +29,7 @@ loop_start:
 
 loop_continue:
     bge s2 s1 loop_end
-    lw s3 0(x0)
+    lw s3 0(s0)
     blt x0 s3 greater_than_zero # if s3 > 0 goto greater_than_zero
     li s3 0
 
