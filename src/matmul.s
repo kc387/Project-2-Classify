@@ -68,7 +68,7 @@ outer_loop_start:
 
 inner_loop_start:
 	lw s10 0(s3) # get value at m1[0] and stick it in s10 YAY
-    bge s8 s5 outer_loop_start
+    bge s8 s5 outer_loop_end
     # dot
     mv a0 s9
     mv a1 s10
@@ -82,7 +82,7 @@ inner_loop_start:
     
     addi s10, s10, 4 # move over
     addi s8, s8, 1
-    j outer_loop_end
+    j inner_loop_start
     
 outer_loop_end:
 	sw s9 0(s0)
@@ -90,6 +90,7 @@ outer_loop_end:
     mul t5, s2, t4
     add s9, s9, t5
     addi s7, s7, 1
+    lw s10 0(s3)
     j outer_loop_start
     
 end:
