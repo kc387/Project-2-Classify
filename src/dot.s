@@ -47,14 +47,17 @@ loop_start:
 loop_continue:
 	bge s5 s2 loop_end 
     lw s6 0(s0) # get value at v0[0] and stick it in s6 YAY
-    lw s7 0(s1) # get value at v1[0] and stick it in s3\7 YAY
+    lw s7 0(s1) # get value at v1[0] and stick it in s7 YAY
     mul t0, s6, s7 # t0 = s6 * s7
     add a0, a0, t0 # add t0 to a0
+    
     sw s6 0(s0)
     sw s7 0(s0)
-    addi s0 s0 t2
-    addi s1 s1 t3
-    addi s5 s5 1 # index increases by 1
+    #add s0, s0, t2
+    addi s0, s0, 4
+    #add s1, s1, t3
+    addi s1, s1, 4
+    addi s5, s5, 1 # index increases by 1
     j loop_continue
 
 
