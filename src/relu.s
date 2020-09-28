@@ -30,8 +30,14 @@ loop_start:
 loop_continue:
     bge s2 s1 loop_end
     lw s3 0(x0)
-    bit x0 s3 greater_than_zero # if s3 > 0 goto greater_than_zero
+    blt x0 s3 greater_than_zero # if s3 > 0 goto greater_than_zero
     li s3 0
+
+greater_than_zero:
+    sw s3 0(s0)
+    addi s0 s0 4
+    addi s2 s2 1
+    j loop_continue
 
 loop_end:
     lw ra, 0(sp)
