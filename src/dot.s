@@ -41,6 +41,7 @@ dot:
 loop_start:
 	li s5 0 # pointer thing for indexing thing
     addi t1, t1, 4
+    li a0 0
 
 
 loop_continue:
