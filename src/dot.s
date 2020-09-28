@@ -58,7 +58,7 @@ loop_continue:
     add a0, a0, s8 # add t0 to a0
     
     sw s6 0(s0)
-    sw s7 0(s0)
+    sw s7 0(s1)
     mul t2, s3, t1
     mul t3, s4, t1
     add s0, s0, t2
