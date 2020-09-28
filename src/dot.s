@@ -38,6 +38,12 @@ dot:
     add s3, a3, x0 # s3 -> stride of v0
     add s4, a4, x0 # s4 -> stride of v1
 
+	li t4 1
+	blt s2 t4 error5
+    blt s3 t4 error6
+    blt s4 t4 error6
+
+
 loop_start:
 	li s5 0 # pointer thing for indexing thing
     addi t1, t1, 4
@@ -59,8 +65,7 @@ loop_continue:
     add s1, s1, t3
     addi s5, s5, 1 # index increases by 1
     j loop_continue
-
-
+    
 loop_end:
 	lw ra, 0(sp)
     lw s0, 4(sp)
@@ -76,6 +81,36 @@ loop_end:
 
     jr ra
 
+# error
+error5:
+	li a1 5
+    lw ra, 0(sp)
+    lw s0, 4(sp)
+    lw s1, 8(sp)
+    lw s2, 12(sp)
+    lw s3, 16(sp)
+    lw s4, 20(sp)
+    lw s5, 24(sp)
+    lw s6, 28(sp)
+    lw s7, 32(sp)
+    lw s8, 36(sp)
+    addi sp, sp, 36
+    jal exit2
+    
+error6:
+	li a1 6
+    lw ra, 0(sp)
+    lw s0, 4(sp)
+    lw s1, 8(sp)
+    lw s2, 12(sp)
+    lw s3, 16(sp)
+    lw s4, 20(sp)
+    lw s5, 24(sp)
+    lw s6, 28(sp)
+    lw s7, 32(sp)
+    lw s8, 36(sp)
+    addi sp, sp, 36
+    jal exit2
 
     # Epilogue
 
