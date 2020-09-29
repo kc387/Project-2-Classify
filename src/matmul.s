@@ -106,8 +106,6 @@ end:
     jr ra
     
 
-	ret
-
 	# error
 error2:
 	li a1 2
