@@ -102,6 +102,8 @@ end:
     lw s8, 36(sp)
     lw s9, 40(sp)
     addi sp, sp, 44
+
+    jr ra
     
 
 	ret
