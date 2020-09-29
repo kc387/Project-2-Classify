@@ -1,5 +1,5 @@
-.import dot.s
-.import utils.s
+.import ../../src/dot.s
+.import ../../src/utils.s
 
 # Set vector values for testing
 .data
@@ -15,9 +15,9 @@ main:
     la s1 vector1
 
     # Set vector attributes
-    addi s2 x0 3 # MAKE CHANGES HERE
+    addi s2 x0 9 # MAKE CHANGES HERE
     addi s3 x0 1 # MAKE CHANGES HERE
-    addi s4 x0 2 # MAKE CHANGES HERE
+    addi s4 x0 1 # MAKE CHANGES HERE
 
 
     # Call dot function
