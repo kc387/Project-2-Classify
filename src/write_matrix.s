@@ -91,7 +91,7 @@ write_matrix:
     
     # fclose
     mv a1 s4
-    jal ra close
+    jal ra fclose
     
     # check for closing error
     bne a0, x0, error55
