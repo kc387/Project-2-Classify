@@ -96,6 +96,8 @@ write_matrix:
     # check for closing error
     bne a0, x0, error55
     
+    j done
+    
 done:
 
     # Epilogue
