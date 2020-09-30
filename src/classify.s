@@ -40,11 +40,11 @@ classify:
     lw s3 12(a1) # input
     lw s4 16(a1) # output
 
-	mv s5 a2 # print_classification -> if 0 print classification; else don't print anything
+	add s5, a2, x0 # print_classification -> if 0 print classification; else don't print anything
     
     # check error -> if argc != 5
-    li t0 5
-    bne a0, t0, error49 
+    li t1 5
+    bne a0, t1, error49 
     
 	# =====================================
     # LOAD MATRICES
@@ -124,9 +124,9 @@ classify:
 	# 	a0 (int*) is the pointer to the array
 	#	a1 (int)  is the # of elements in the array
     mv a0 s10 # s10 = m0 * input
-    lw t1 0(s6)
-    lw t2 20(s6)
-    mul a1, t1, t2
+    lw a1 0(s6)
+    lw a2 20(s6)
+    mul a1, a1, a2
     jal ra relu 
     
     # 3. LINEAR LAYER:    m1 * ReLU(m0 * input)
