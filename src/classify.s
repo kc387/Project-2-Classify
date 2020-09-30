@@ -78,6 +78,12 @@ classify:
     mv s7 a0 # s7 -> m0 matrix
 
     # Load pretrained m1
+    mv a1 s1 # print max value
+    jal ra print_str
+    
+    mv a1 s6 # print max value
+    jal ra print_int
+
 	mv a0 s2
     addi a1, s6, 8 # rows
     addi a2, s6, 12 # cols
@@ -85,6 +91,12 @@ classify:
     mv s8 a0 # s8 -> m1 matrix
 
     # Load input matrix
+    mv a1 s1 # print max value
+    jal ra print_str
+    
+    mv a1 s6 # print max value
+    jal ra print_int
+    
     mv a0 s3
     addi a1, s6, 16 # rows
     addi a2, s6, 20 # cols
