@@ -135,7 +135,7 @@ classify:
     # 3. LINEAR LAYER:    m1 * ReLU(m0 * input)
     # malloc sadness 3.0 (malloc space for output array)
     lw a1 8(s6)
-    lw a2 20 (s6)
+    lw a2 20(s6)
     mul a0, a1, a2
     slli a0, a0, 2 # total num bytes for malloc
     jal ra malloc
